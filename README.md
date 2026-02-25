@@ -37,6 +37,8 @@ streamlit run frontend/dashboard.py
 ## Датасет
 Stock Market Dataset с Kaggle:
 https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset
+В связи с большим объемом исходных данных, в данной работе используется уменьшенная выборка:
+https://drive.google.com/file/d/1nCBkx6k1L6aa1-f_UkPJ64YEI-6f6ZBO/view?usp=drive_link
 
 ## Демонстрация работы
 
