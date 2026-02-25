@@ -24,6 +24,7 @@ docker-compose up -d
 
 ### 2. Обучить модель
 python backend/train_model.py
+(Обученная модель лежит в /models/model.plk)
 
 ### 3. Запустить сервисы
 python backend/consumer_ml.py
