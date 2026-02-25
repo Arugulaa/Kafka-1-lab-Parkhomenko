@@ -1,8 +1,8 @@
-# Kafka-1-lab-Parkhomenko
-Kafka + ML Pipeline for Stock Market
-# Kafka ML Pipeline — Stock Market
+# Репозиторий Kafka-1-lab-Parkhomenko
 
-Система потоковой обработки данных фондового рынка с ML предсказаниями.
+Технологии работы с большими массивами данных-2026 - 1 Лабораторная работа
+Kafka + ML Pipeline для датасета Stock Market (Система потоковой обработки данных фондового рынка с ML предсказаниями).
+Выполнил: Пархоменко Николай, 25МАГ-ИАД
 
 ## Стек
 - Apache Kafka (Docker, bitnami/kafka)
