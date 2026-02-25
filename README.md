@@ -34,38 +34,4 @@ streamlit run frontend/dashboard.py
 ## Датасет
 Stock Market Dataset с Kaggle:
 https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset
-```
 
----
-
-## Шаг 4: Установи Git
-
-Проверь установлен ли Git:
-```
-git --version
-```
-
-Если не установлен — скачай с git-scm.com и установи.
-
----
-
-## Шаг 5: Загрузи проект
-
-Выполни команды по одной в терминале из папки проекта:
-```
-git init
-```
-```
-git add .
-```
-```
-git commit -m "Kafka ML Pipeline: Producer, Consumer, Dashboard"
-```
-```
-git branch -M main
-```
-```
-git remote add origin https://github.com/ТУТ_ТВОЙ_ЛОГИН/kafka_ml_proj.git
-```
-```
-git push -u origin main
