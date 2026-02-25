@@ -1,0 +1,43 @@
+services:
+
+  # Kafka брокер — принимает и раздаёт сообщения
+  # используем образ bitnami/kafka как рекомендовал преподаватель
+  kafka:
+    image: docker.io/bitnami/kafka:3.7.0
+    container_name: kafka_broker
+    ports:
+      # порт 9092 — стандартный порт Kafka
+      # левый порт (9092) — на твоей машине
+      # правый порт (9092) — внутри контейнера
+      - "9092:9092"
+    environment:
+      # KRaft режим — Kafka без ZooKeeper (современный способ)
+      # раньше Kafka требовала отдельный сервис ZooKeeper
+      # сейчас всё встроено в саму Kafka
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
+      # адрес на котором Kafka слушает подключения
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      # адрес который Kafka сообщает клиентам для подключения
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      # количество реплик по умолчанию для новых топиков
+      - KAFKA_CFG_DEFAULT_REPLICATION_FACTOR=1
+      # количество партиций по умолчанию для новых топиков
+      - KAFKA_CFG_NUM_PARTITIONS=1
+    volumes:
+      # сохраняем данные Kafka на диск
+      # иначе при перезапуске контейнера все сообщения удалятся
+      - kafka_data:/bitnami/kafka
+    healthcheck:
+      # проверяем что Kafka запустилась и готова принимать подключения
+      test: ["CMD-SHELL", "kafka-topics.sh --bootstrap-server localhost:9092 --list"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  # именованный volume для хранения данных Kafka
+  kafka_data:
